@@ -1,12 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import Controller from './components/viewController'
 import reducer from './reducers/reducer'
-import {plusClicked, minusClicked} from './actionCreators/actionCreator'
+import {plusClicked, minusClicked, fetchBooks} from './actionCreators/actionCreator'
+// middleware
+import {createLogger} from 'redux-logger'
+import thunk from 'redux-thunk'
 
-const store = createStore(reducer, 11);
-console.log(reducer);
+const logger = createLogger();
+const store = createStore(
+	reducer,
+	11,
+	applyMiddleware(thunk, logger)
+);
 
 const render = _ => ReactDOM.render(
 
@@ -16,6 +23,7 @@ const render = _ => ReactDOM.render(
 			state = {store.getState()}
 			onPlusClicked = {_ => store.dispatch(plusClicked())}
 			onMinusClicked = {_ => store.dispatch(minusClicked())}
+			onAjaxClicked = {_ => store.dispatch(fetchBooks())}
 		/>
 	</div>,
   document.querySelector('#wrapper')

@@ -15,6 +15,9 @@ class Controller extends React.Component{
 					<button onClick={this.props.onMinusClicked}>
 						MINUS
 					</button>
+					<button onClick={this.props.onAjaxClicked}>
+						Ajax
+					</button>
 				</div>
 			</div>
 		)
