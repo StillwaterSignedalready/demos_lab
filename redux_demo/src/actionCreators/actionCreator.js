@@ -28,6 +28,6 @@ export const fetchBooks = _ => {
 	return (dispatch, getState) => {
 		dispatch(sendRequest())
 		return getAll()
-		.then(books => {console.log(books); dispatch(receiveResponse(books))})
+		.then(books => {dispatch(receiveResponse(books))})
 	}
 }

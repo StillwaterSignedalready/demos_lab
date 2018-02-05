@@ -1,19 +1,36 @@
-export default (prevState = 0, action) => {
-	let newState = {};
+import {combineReducers} from 'redux'
+
+/**
+ * return a number
+ * @param  {Number} prevState state.number
+ * @param  {obj} action    without payload
+ * @return {[type]}           newState
+ */
+const mathReducer = (prevState = 0, action) => {
 	switch (action.type){
 		case 'PLUS':
-			newState = JSON.parse(JSON.stringify(prevState));
-			++newState.number;
-			return newState;
+			return prevState + 1;
 			break;
 		case 'MINUS':
-			newState = JSON.parse(JSON.stringify(prevState));
-			--newState.number;
-			return newState;
+			return prevState - 1;
 			break;
+	default:
+			return prevState;
+	}
+}
+
+/**
+ * request several books from server - first action
+ * receive several books from server - second action
+ * @param  {Array} prevState [description]
+ * @param  {[type]} action    [description]
+ * @return {[type]}           [description]
+ */
+const ajaxReducer = (prevState = 0, action) => {
+	let newState = {};
+	switch (action.type){
 		case 'RECEIVE_RESPONSE':
-			newState = JSON.parse(JSON.stringify(prevState));
-			newState.books = action.payload;
+			newState = action.payload;
 			return newState;
 			break;
 	default:
@@ -22,4 +39,9 @@ export default (prevState = 0, action) => {
 	}
 }
 
+const reducer = combineReducers({
+	number: mathReducer, 
+	books: ajaxReducer
+})
+export default reducer
  
