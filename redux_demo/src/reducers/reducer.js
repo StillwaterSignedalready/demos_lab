@@ -1,13 +1,24 @@
-export default (state = 0, action) => {
+export default (prevState = 0, action) => {
+	let newState = {};
 	switch (action.type){
 		case 'PLUS':
-			return state + 1;
+			newState = JSON.parse(JSON.stringify(prevState));
+			++newState.number;
+			return newState;
 			break;
 		case 'MINUS':
-			return state - 1;
+			newState = JSON.parse(JSON.stringify(prevState));
+			--newState.number;
+			return newState;
 			break;
-		default:
-			return state;
+		case 'RECEIVE_RESPONSE':
+			newState = JSON.parse(JSON.stringify(prevState));
+			newState.books = action.payload;
+			return newState;
+			break;
+	default:
+			newState = JSON.parse(JSON.stringify(prevState));
+			return newState;
 	}
 }
 

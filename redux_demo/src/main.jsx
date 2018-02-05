@@ -9,9 +9,14 @@ import {createLogger} from 'redux-logger'
 import thunk from 'redux-thunk'
 
 const logger = createLogger();
+const initState = {
+	number: 10,
+	books: []
+}
+
 const store = createStore(
 	reducer,
-	11,
+	initState,
 	applyMiddleware(thunk, logger)
 );
 

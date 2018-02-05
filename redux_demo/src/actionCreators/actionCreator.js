@@ -17,8 +17,9 @@ const sendRequest = _ => ({
 	type: 'REQUEST'
 })
 
-const receiveResponse = _ => ({
-	type: 'RECEIVE_RESPONSE'
+const receiveResponse = payload => ({
+	type: 'RECEIVE_RESPONSE',
+	payload
 })
 
 export const fetchBooks = _ => {
@@ -27,6 +28,6 @@ export const fetchBooks = _ => {
 	return (dispatch, getState) => {
 		dispatch(sendRequest())
 		return getAll()
-		.then(books => {console.log(books); dispatch(receiveResponse())})
+		.then(books => {console.log(books); dispatch(receiveResponse(books))})
 	}
 }

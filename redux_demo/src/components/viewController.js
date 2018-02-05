@@ -1,4 +1,5 @@
 import React from 'react'
+import Book from './Book'
 
 class Controller extends React.Component{
 
@@ -6,7 +7,7 @@ class Controller extends React.Component{
 		return (
 			<div>
 				<h1>
-					{this.props.state}
+					{this.props.state.number}
 				</h1>
 				<div>
 					<button onClick={this.props.onPlusClicked}>
@@ -19,6 +20,7 @@ class Controller extends React.Component{
 						Ajax
 					</button>
 				</div>
+				{this.props.state.books.map(book => <Book book={book} key={book.id} />)}
 			</div>
 		)
 	}
