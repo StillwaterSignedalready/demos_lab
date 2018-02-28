@@ -1,8 +1,9 @@
 class Observer{
-	constructor(data){
+	constructor(data, render){
 		this.data = data;
 		this.walk(data);
 		this.callbacks = {};
+		this.render = render;
 	}
 
 	walk(obj){
@@ -12,7 +13,7 @@ class Observer{
 				val = obj[key];
 				// 如果是对象则继续深挖
 				if(typeof val === 'object'){
-					new Observer(val);
+					new Observer(val, this.render);
 				}
 				// 监控每个节点
 				this.convert(key, val);
@@ -36,13 +37,18 @@ class Observer{
 			},
 			set: function(newValue){
 				console.log('你设置了' + key, '新的' + key + ' = ' + newValue);
-				for(let callback of self.callbacks[key]){
-					callback(key, val, newValue);
+				if(self.callbacks[key] instanceof Array){
+					for(let callback of self.callbacks[key]){
+						callback(key, val, newValue);
+					}
 				}
 				if(typeof newValue === 'object'){
 					new Observer(newValue);
 				}
 				val = newValue;
+				if(self.render instanceof Function){
+					self.render();
+				}
 			}
 		} );
 	}
@@ -76,21 +82,61 @@ class Observer{
 		}
 	}
 
+
 }
 
-let data = {
-    user: {
-        name: "liangshaofeng",
-        age: "24"
-    },
-    address: {
-        city: "beijing"
-    },
-    a: 'aa'
+class Vue{
+	constructor(obj){
+		this.$el = document.querySelector(obj.el);
+		this.data = obj.data;
+		this.ob = new Observer(obj.data, this.render.bind(this));
+	}
+
+	parseTextExp(text,data) {
+		let regText = /\{\{(.+?)\}\}/g;
+		let pieces = text.split(regText);
+		let matches = text.match(regText);
+		let result = [];
+		pieces.forEach(function (piece) {
+			if(matches && matches.indexOf('{{' + piece + '}}') > -1){ //包含数据的项
+				let properties = piece.split('.');
+				let datas = data;
+				properties.forEach(function(value){
+				  datas = datas[value];
+				});
+				result.push(datas);
+			}else if(piece){ //正常项
+				result.push(piece);
+			}
+		});
+		return result.join('');
+	}
+
+	render(){
+		console.log('render');
+		const el = this.$el;
+		
+		el.innerHTML = this.parseTextExp(el.innerHTML, this.data);
+	}
+}
+
+let obj = {
+	el: '#app',
+	data:{
+	    user: {
+	        name: "liangshaofeng",
+	        age: "24"
+	    },
+	    address: {
+	        city: "beijing"
+	    },
+	    a: 'aa'
+	}
 };
 
-let app = new Observer(data);
+let app = new Vue(obj);
 
-app.$watch('a', function(key, value, newValue){
-	console.log(`OH, you change ${key} to ${newValue}`)
-})
+// app.$watch('a', function(key, value, newValue){
+// 	console.log(`OH, you change ${key} to ${newValue}`)
+// })
+
