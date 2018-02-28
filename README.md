@@ -9,6 +9,7 @@
 - 使用了logger中间件来记录action，可在console里查看
 ## 目的
 - 试验了react + redux + webpack的开发模式
-- 试验了redux的middleware和combineReducer发出异步action的技巧
+- 试验了redux的combineReducer和用middleware发出异步action的技巧
 
-
+# vue模拟
+- 学习vue源码
