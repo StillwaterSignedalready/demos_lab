@@ -1,9 +1,9 @@
 class Observer{
 	constructor(data, render){
 		this.data = data;
+		this.render = render;
 		this.walk(data);
 		this.callbacks = {};
-		this.render = render;
 	}
 
 	walk(obj){
