@@ -1,12 +1,25 @@
 <template>
   <section class="container">
-    <section class="menu"></section>
-    <section class="content-container"></section>
+    <section class="menu">
+      <menus></menus>
+    </section>
+    <section class="content-container">
+      <todo></todo>
+    </section>
   </section>
 </template>
 
 <script>
-  export default {}
+  import menus from './menus'
+  import todo from './todo'
+
+  export default {
+    // 注册组件！
+    components: {
+      menus,
+      todo
+    }
+  }
 </script>
 
 <style lang="less">
