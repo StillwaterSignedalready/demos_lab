@@ -7,9 +7,9 @@
 var name = process.argv[2];
 var exec = require('child_process').exec;
 
-var child = exec('echo bilibi' + name, function(err, stdout, stderr){
-    if(err) throw err;
-    console.log(stdout);
-})
+// var child = exec('echo bilibi' + name, function(err, stdout, stderr){
+//     if(err) throw err;
+//     console.log(stdout);
+// })
 
-console.log(exec.name)
+console.log(process)
