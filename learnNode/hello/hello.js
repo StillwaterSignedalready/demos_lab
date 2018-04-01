@@ -11,3 +11,5 @@ var child = exec('echo bilibi' + name, function(err, stdout, stderr){
     if(err) throw err;
     console.log(stdout);
 })
+
+console.log(exec.name)
