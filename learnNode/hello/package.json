@@ -1,7 +1,4 @@
 {
-  "devDependencies": {
-    "redux": "^3.7.2"
-  },
   "dependencies": {
     "async_hooks": "^1.0.0"
   }

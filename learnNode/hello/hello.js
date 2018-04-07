@@ -5,6 +5,7 @@
 // !/usr/bin/env node会去环境设置寻找node目录,推荐这种写法
 
 var name = process.argv[2];
+const crypto = require('crypto');
 var exec = require('child_process').exec;
 
 // var child = exec('echo bilibi' + name, function(err, stdout, stderr){
