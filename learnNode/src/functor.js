@@ -1,4 +1,6 @@
 var _ = require('ramda');
+var curry = _.curry;
+var compose = _.compose;
 
 // functor 是实现了 map 函数并遵守一些特定规则的容器类型。
 var Container = function(x){ // container构造函数
@@ -33,6 +35,9 @@ Maybe.prototype.isNothing = function(){ // 判断value是否falsy
 
 // 与之前的.map不同的是：值为null的functor如果map很可能会直接报错
 // 而Maybe的map会在运作前截流
+// Maybe的字面含义: 例如Maybe.of(obj.sth).map(foo)的意思就是——
+// 或许有obj.sth这么个值，有的话就传给foo，没有的话就不调用foo，直接返回null
+// 这样就杜绝了这种错误：undefined.xx
 Maybe.prototype.map = function(f){
   return this.isNothing() ? Maybe.of(null) : Maybe.of(f(this._value))
 }
@@ -42,5 +47,34 @@ Maybe.prototype.map = function(f){
 var map = _.curry(function(f, any_functor_at_all){
   return any_functor_at_all.map(f)
 })
+
+/** ========================================== */
+
+var safeHead = function(xs){
+  return Maybe.of(xs[0]);
+};
+
+var streetName = _.compose(map(_.prop('street')), safeHead, _.prop('addresses'));
+
+// 
+var withdraw = _.curry(function(amount, account){
+  return account.balance >= amount ?
+    Maybe.of({balance: account.balance - amount}) :
+    Maybe.of(null);
+})
+
+var remainingBalance = a => a;
+var updateLedger = a => a;
+
+var finishTransaction = _.compose(remainingBalance, updateLedger);
+
+// maybe :: b -> (a->b) -> Maybe a -> b
+var maybe = _.curry(function(x, f, m){
+  return m.isNothing() ? x : f(m._value);
+});
+
+var getTwenty = compose(maybe("You're broke!", finishTransaction) ,withdraw(20));
+
+console.log(getTwenty({ balance: 200.00}));
 
 console.log('Done!')
