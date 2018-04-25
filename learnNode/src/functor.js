@@ -75,6 +75,16 @@ var maybe = _.curry(function(x, f, m){
 
 var getTwenty = compose(maybe("You're broke!", finishTransaction) ,withdraw(20));
 
-console.log(getTwenty({ balance: 200.00}));
+// ============================================
+
+var Left = function(x){
+  this._value = x;
+}
+
+Left.of = function(x){
+  return new Left(x);
+}
+
+
 
 console.log('Done!')
