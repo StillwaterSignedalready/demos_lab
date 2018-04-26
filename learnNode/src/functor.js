@@ -85,6 +85,53 @@ Left.of = function(x){
   return new Left(x);
 }
 
+Left.prototype.map = function(f){
+  return this;
+}
 
+var Right = function(x){
+  this._value = x;
+}
+
+Right.of = function(x){
+  return new Right(x);
+}
+
+Right.prototype.map = function(f){
+  return Right.of(f(this._value));
+}
+
+var getAge = function(now, user){
+  var birthdate =  moment(user.birthdate, 'YYYY-MM-DD');
+  if(!birthdate.isValid()) return Left.of("Birth date could not be parsed");
+  return Right.of(now.diff(birthdate, 'years'));
+}
+
+//  either :: (a -> c) -> (b -> c) -> Either a b -> c
+var either = curry(function(f, g, e){
+  switch(e.constructor){
+    case Left: return f(e._value);
+    case Right: return g(e._value);
+  }
+})
+
+// IO 把非纯执行动作（impure action）捕获到包裹函数里，目的是延迟执行这个非纯动作
+var IO = function(f){
+  this._value = f;
+}
+
+IO.of = function(x){
+  return new IO(function(){
+    return x
+  })
+}
+
+IO.prototype.map = function(f){
+  return new IO(_.compose(f,this._value)); // here is the different!!
+}
+
+var io_window = new IO(function(){return window});
+
+io_window.map(function(win){return win.innerWidth})
 
 console.log('Done!')
