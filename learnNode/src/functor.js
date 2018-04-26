@@ -116,6 +116,7 @@ var either = curry(function(f, g, e){
 })
 
 // IO 把非纯执行动作（impure action）捕获到包裹函数里，目的是延迟执行这个非纯动作
+// 这就导致IO.map仍然是pure操作，只有最后调用._value为非纯(因为._value()的结果依赖外部数据)
 var IO = function(f){
   this._value = f;
 }
@@ -130,8 +131,40 @@ IO.prototype.map = function(f){
   return new IO(_.compose(f,this._value)); // here is the different!!
 }
 
-var io_window = new IO(function(){return window});
+var io_window = new IO(function(){return module});
 
-io_window.map(function(win){return win.innerWidth})
+// =============================
+
+var fs = require('fs');
+var Task = require('data.task')
+
+var readFile = function(fileName){
+  return new Task(function(reject, result){
+    fs.readFile(fileName, 'utf-8', function(err, data){
+      err ? reject(err) : result(data);
+    });
+  })
+}
+
+readFile("metamorphosis").map(_.split('\n')).map(_.head);
+
+var dbUrl = function(c) {
+  return (c.uname && c.pass && c.host && c.db) // 检测interfaces
+    ? Right.of("db:pg://"+c.uname+":"+c.pass+"@"+c.host+"5432/"+c.db)
+    : Left.of(Error("Invalid config!"));
+}
+
+//  connectDb :: Config -> Either Error (IO DbConnection)
+var connectDb = compose(map(Postgres.connect), dbUrl);
+G
+//  getConfig :: Filename -> Task Error (Either Error (IO DbConnection))
+var getConfig = compose(map(compose(connectDb, JSON.parse)), readFile);
+
+
+// Impure calling code
+//=====================
+getConfig("db.json").fork(
+  logErr("couldn't read file"), either(console.log, map(runQuery))
+);
 
 console.log('Done!')
