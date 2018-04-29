@@ -155,16 +155,24 @@ var dbUrl = function(c) {
 }
 
 //  connectDb :: Config -> Either Error (IO DbConnection)
-var connectDb = compose(map(Postgres.connect), dbUrl);
-G
-//  getConfig :: Filename -> Task Error (Either Error (IO DbConnection))
-var getConfig = compose(map(compose(connectDb, JSON.parse)), readFile);
 
 
-// Impure calling code
-//=====================
-getConfig("db.json").fork(
-  logErr("couldn't read file"), either(console.log, map(runQuery))
-);
+
+var id = x => x + 1;
+
+var idLaw1 = map(id);
+var idLaw2 = id;
+
+var compLaw1 = compose(map(_.concat(" world")), map(_.concat(" cruel")));
+var compLaw2 = map(compose(_.concat(" world"), _.concat(" cruel")));
+
+var Compose = function(f_g_x){
+  this.getCompose = f_g_x;
+}
+
+// map :: (a -> b) -> Compose
+Compose.prototype.map = function(f){
+  return new Compose(map(map(f), this.getCompose));
+}
 
 console.log('Done!')
