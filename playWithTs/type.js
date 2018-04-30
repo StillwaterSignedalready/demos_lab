@@ -10,3 +10,21 @@ urNum = 1;
 var sth;
 sth = 'two';
 sth = 1;
+// 类型推论，根据声明变量时赋值的类型推断类型
+// 如果定义的时候没有赋值，不管之后有没有赋值，都会被推断成 any 类型而完全不被类型检查
+var hisNum = 'one'; // 相当于let hisNum: string = 'one';
+hisNum = 1;
+var thatNum;
+thatNum = 'one';
+thatNum = 1;
+thatNum = true;
+// 不确定一个联合类型的变量到底是哪个类型的时候,只能访问此联合类型的所有类型里共有的属性或方法
+function getLen(sth) {
+    return sth.toString();
+}
+// 联合类型的变量在被赋值的时候，会根据类型推论的规则推断出一个类型
+var aNum;
+aNum = 'seven';
+aNum.length;
+aNum = 1;
+aNum.length;
