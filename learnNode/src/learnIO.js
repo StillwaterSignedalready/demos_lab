@@ -6,9 +6,10 @@ const filePath = './learnNode/src/test.txt';
 const data = '';
 
 new Promise((resolve, reject) => {
-  fs.readFile(filePath, 'utf-8',(err, data) => {
+  fs.readFile(__dirname + '/test.txt', 'utf-8',(err, data) => {
     if(err) throw err;
     data = data + ` ${Math.random() * 10}`;
+    console.log('will write in: ' + data);
     resolve(data);
   })
 })
@@ -23,4 +24,4 @@ new Promise((resolve, reject) => {
   
 })
 
-
+console.log(__filename, __dirname);

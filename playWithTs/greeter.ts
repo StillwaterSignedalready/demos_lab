@@ -10,10 +10,8 @@ interface Person {
   lastName: string;
 }
 
-function greeter(person : Person) {
-  return "Hello, " + person.firstName + " " + person.lastName;
-}
+// 如果是一个普通类型，在赋值过程中改变类型是不被允许的：
+let num: any = 'seven';
+num = 1;
 
-let user = new Student("Jane", "M.", "User");
-
-console.log(greeter(user));
+console.log('done');
