@@ -36,7 +36,7 @@ aNum = 1;
 aNum.length;
 
 function reverse(x: string): string; // 优先把精确的定义写在前面
-function reverse(x: number): number;
+
 function reverse(x: number | string): number | string {
   if (typeof x === 'number') {
       return Number(x.toString().split('').reverse().join(''));
