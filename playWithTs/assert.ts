@@ -7,3 +7,8 @@ function getLen(sth: string | number): number{
   }
 }
 
+Math.pow(1,'2')
+
+document.addEventListener('click', function(e) {
+  console.log(e.targetCurrent);
+});
