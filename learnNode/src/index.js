@@ -7,6 +7,7 @@ const handle = {}; // 路由与reqHandler的映射关系
 handle['/'] = requestHandler.start;
 handle['/start'] = requestHandler.start;
 handle['/upload'] = requestHandler.upload;
+handle['/show'] = requestHandler.show;
 
 // console.log('router:', router)
 server.start(router.route, handle);

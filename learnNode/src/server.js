@@ -9,14 +9,23 @@ const
 function start(route, handle){
 
   const onRequest = (req, res) => {
-
+    let postData = '';
     const pathname = url.parse(req.url).pathname;
     console.log(`req for ${pathname} received`)
-    // console.log(`handle is ${handle.upload}`)
-    // console.log(`url module: ${url}`)
-    // console.log(`route: ${route}`)
+    
+    req.setEncoding('utf8');
 
-    route(handle, pathname, res); // 调用路由映射的方法
+    req.addListener('data', postDataChunk => {
+      postData += postDataChunk;
+      console.log(`-------Receive data chunk.`)
+    });
+    
+    req.addListener('end', postDataChunk => {
+      postData += postDataChunk;
+      route(handle, pathname, res, postData); // 调用路由映射的方法
+    });
+    
+
   }
 
   // createServer:: (req, res -> void) -> Server

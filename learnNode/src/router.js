@@ -1,8 +1,8 @@
 // 为路由分配callback
-function route(handle, pathname, response){
+function route(handle, pathname, response, postData){
   console.log(`About to route a req for ${pathname} `)
   if(typeof handle[pathname] === 'function'){
-    return handle[pathname](response); // find callback and call it
+    return handle[pathname](response, postData); // find callback and call it
   }else{
     console.log(`No request handler found for ${pathname}`)
     response.writeHead(404, {"Content-Type": "text/plain"});
