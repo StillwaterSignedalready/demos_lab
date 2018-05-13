@@ -40,7 +40,14 @@ interface Point3d extends Point{ // 接口继承类
 let point: Point3d = {x:1, y: 1, z: 1}
 
 interface Counter{
-  (start: number): string; // 这是啥意思？
+  (start: number): string; // 定义函数自身
   interval: number;
   reset(): void;
+}
+
+function getCounter(): Counter{
+  let counter = <Counter>function(start: number){return ''}
+  counter.interval = 123;
+  counter.reset = function(){};
+  return counter;
 }
