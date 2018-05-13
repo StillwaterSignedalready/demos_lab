@@ -2,22 +2,25 @@
 const
   exec = require('child_process').exec;
   url = require('url'),
-  http = require('http');
+  http = require('http')
 
-function start(pathname){
-  onReq = (req, res) => {
-    const pathname = url.parse(req.url).pathname;
-    console.log(`req for ${pathname} received`)
-    let content = route(handle, pathname, res);
-  }
+function start(res){
+  console.log(`ReqHandler 'start' was called.`)
+  
+  exec('node -h', (error, stdout, stderr) => {
+    res.writeHead(200, {"Content-Type": "text/plain"});
+    res.write(stdout);
+    res.end();
+    console.log('res sended===========================================')
+  })
 
-  http.createServer(onReq).listen(8888);
-  console.log('server started')
 }
 
-function upload(pathname){
+function upload(res){
   console.log(`ReqHandler 'upload' was called.`)
-  return 'Hello upload'
+  res.writeHead(200, {"Content-Type": "text/plain"});
+    res.write('Hello upload');
+    res.end();
 }
 
 

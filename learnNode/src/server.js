@@ -16,15 +16,7 @@ function start(route, handle){
     // console.log(`url module: ${url}`)
     // console.log(`route: ${route}`)
 
-    let content = route(handle, pathname); // 调用路由映射的方法
-
-    // 组装response
-    res.writeHead(200, {"Content-Type": "text/plain"}); //先写header
-    res.write(content); //再写内容
-    res.end(); // 完成响应
-
-    console.log('res sended! ==============================================')
-
+    route(handle, pathname, res); // 调用路由映射的方法
   }
 
   // createServer:: (req, res -> void) -> Server
