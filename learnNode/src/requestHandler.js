@@ -15,9 +15,10 @@ function start(res, postData){
       <meta http-equiv="Content-type" content="text/html" charset="UTF-8">
     </head>
     <body>
-      <form action="/upload" method="post">
+      <form action="/upload" enctype="multipart/formdata" method="post">
         <textarea name="text" cols="60" rows="20"></textarea>
-        <input type="submit" value="Submit text">
+        <input type="file" name="upload">
+        <input type="submit" value="Upload file">
       </form>
     </body>
   </html>`;
