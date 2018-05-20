@@ -9,12 +9,20 @@
       "request": "launch",
       "name": "Launch Current",
       "program": "${file}",
+      "outFiles": [
+        "./*.js"
+      ],
+      "preLaunchTask": "ts"
     },
     {
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/src\\lessons\\greeter.js"
+      "program": "${workspaceFolder}/src/index.ts",
+      "outFiles": [
+        "${workspaceFolder}/src/index.js"
+      ],
+      // "preLaunchTask": "ts"
     }
   ]
 }

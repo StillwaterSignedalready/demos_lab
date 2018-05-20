@@ -1,3 +1,4 @@
+"use strict";
 // 如果是一个普通类型，在赋值过程中改变类型是不被允许的
 var myNum = 'seven';
 myNum.show(); // 类型系统会检测该类型有无此方法
@@ -28,3 +29,11 @@ aNum = 'seven';
 aNum.length;
 aNum = 1;
 aNum.length;
+function reverse(x) {
+    if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    }
+    else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
+}
