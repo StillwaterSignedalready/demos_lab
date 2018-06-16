@@ -1,16 +1,18 @@
 import * as fs from 'fs';
+import * as crypto from 'crypto';
+import * as http from 'http';
+import * as path from 'path';
+import * as util from 'util';
+import * as events from 'events';
 
-// const
-//   rs = fs.createReadStream('../doc/sample.txt', 'utf-8'),
-//   ws = fs.createWriteStream('copied')
+var emitter = new events.EventEmitter();
 
-const rs = fs.createReadStream('./doc/sample.txt', 'utf-8');
-
-rs.on('data', chunk => {
-  console.log('DATA===============>');
-  // console.log(chunk)
+emitter.on('someEvent', function(arg1, arg2) {
+  console.log('listener1', arg1, arg2);
 });
+emitter.on('someEvent', function(arg1, arg2) {
+  console.log('listener2', arg1, arg2);
+});
+emitter.emit('someEvent', 'byvoid', 1991);
 
-rs.on('end', _ => console.log('END--------------->'))
-
-rs.on('error', e => console.log('ERROR--------------->' + e))
+let i = 0;

@@ -7,15 +7,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = __importStar(require("fs"));
-// const
-//   rs = fs.createReadStream('../doc/sample.txt', 'utf-8'),
-//   ws = fs.createWriteStream('copied')
-const rs = fs.createReadStream('./doc/sample.txt', 'utf-8');
-rs.on('data', chunk => {
-    console.log('DATA===============>');
-    // console.log(chunk)
+const events = __importStar(require("events"));
+var emitter = new events.EventEmitter();
+emitter.on('someEvent', function (arg1, arg2) {
+    console.log('listener1', arg1, arg2);
 });
-rs.on('end', _ => console.log('END--------------->'));
-rs.on('error', e => console.log('ERROR--------------->' + e));
+emitter.on('someEvent', function (arg1, arg2) {
+    console.log('listener2', arg1, arg2);
+});
+emitter.emit('someEvent', 'byvoid', 1991);
+let i = 0;
 //# sourceMappingURL=index.js.map

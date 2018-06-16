@@ -22,7 +22,7 @@
       "outFiles": [
         "${workspaceFolder}/src/index.js"
       ],
-      // "preLaunchTask": "ts"
+      "preLaunchTask": "ts"
     }
   ]
 }

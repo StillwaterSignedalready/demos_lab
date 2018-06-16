@@ -4,6 +4,15 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "ts-watch",
+      "type": "typescript",
+      "tsconfig": "tsconfig.json",
+      "option": "watch",
+      "problemMatcher": [
+        "$tsc-watch"
+      ]
+    },
+    {
       "label": "ts",
       "type": "typescript",
       "tsconfig": "tsconfig.json",
@@ -14,6 +23,6 @@
         "kind": "build",
         "isDefault": true
       }
-    }
+    },
   ]
 }
