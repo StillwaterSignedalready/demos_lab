@@ -6,20 +6,74 @@ class Node{
   }
 }
 
+/**
+ * 当需要平衡树时，旋转树
+ * @param  {{left:Node,key:number,right:Node}} node
+ */
+const rotationRR = node => {
+  let tmp = node.right; // 保存新的根节点的引用
+  node.right = tmp.left;
+  tmp.left = node;
+  return tmp
+}
+
+/**
+ * 当需要平衡树时，旋转树
+ * @param  {{left:Node,key:number,right:Node}} node
+ */
+const rotationLL = node => {
+  let tmp = node.left; // 保存新的根节点的引用
+  node.left = tmp.right;
+  tmp.right = node;
+  return tmp
+}
+
+/**
+ * 当需要平衡树时，旋转树
+ * @param  {{left:Node,key:number,right:Node}} node
+ */
+const rotationLR = node => {
+  node.left = rotationRR(node.left)
+  return rotationLL(node)
+}
+
+/**
+ * 当需要平衡树时，旋转树
+ * @param  {{left:Node,key:number,right:Node}} node
+ */
+const rotationRL = node => {
+  node.right = rotationRR(node.right)
+  return rotationLL(node)
+}
+
 const insertNode = (curNode, newNode) => {
-  console.log('curNode: ' + curNode.key)
+  // console.log('curNode: ' + curNode.key)
   if(newNode.key < curNode.key){
     if(curNode.left === null){
       curNode.left = newNode;
     }else{
-      insertNode(curNode.left, newNode);
+      insertNode(curNode.left, newNode); // 向左走
+      if(heightNode(node.left) - heightNode(node.right)){
+
+      }
     }
   }else{
     if(curNode.right === null){
       curNode.right = newNode;
     }else{
-      insertNode(curNode.right, newNode);
+      insertNode(curNode.right, newNode);  // 向右走
     }
+  }
+}
+
+const heightNode = node => {
+  if(!node){
+    return -1
+  }else{
+    // node高度等于(left和right高度中更高的那个)+1
+    // 类似冒泡的机制，只有更大的值才能参与计算
+    return Math.max(heightNode(node.left),
+    heightNode(node.right)) + 1
   }
 }
 
