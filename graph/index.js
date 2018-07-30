@@ -45,9 +45,9 @@ class Graph{
    */
   bfs(v, callback){
     const color = this.initializeColor(), // all vertices are white at beginning
-    queue = new Queue(),
-    d = {},
-    pred = {};
+      queue = new Queue(),
+      d = {}, // distance
+      pred = {};
     queue.enqueue(v);
 
     for(const vertice of this.vertices){
@@ -56,7 +56,7 @@ class Graph{
     }
 
     while(!queue.isEmpty()){
-      /** 出队一个vertice u 染色为grey */
+      /** each loop 出队一个vertice u 染色为grey */
       const
         u = queue.dequeue(), // first in, first out
         neighbors = this.adjList.get(u);
@@ -65,12 +65,18 @@ class Graph{
       for(const w of neighbors){
         if(color[w] === 'white'){
           color[w] = 'grey';
+          d[w] = d[u] + 1;
+          pred[w] = u;
           queue.enqueue(w);
         }
       }
       /** 操作u,染色为black */
       color[u] = 'black';
-      callback && callback(u)
+      callback && callback(u) // 用typeof判断funtion
+    }
+    return {
+      distances: d,
+      predecessors: pred
     }
   }
 }
@@ -95,4 +101,6 @@ graph.addEdge('E', 'I');
 
 console.log(graph.toString())
 
-graph.bfs(myVertices[0], v => console.log('Visited vertex: ' + v))
+// graph.bfs(myVertices[0], v => console.log('Visited vertex: ' + v))
+const shortestPathA = graph.bfs(myVertices[0])
+console.log(shortestPathA)
