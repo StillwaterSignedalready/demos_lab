@@ -1,5 +1,6 @@
 # init
-关于webpack开发环境起步的试验
+- 归并排序算法js实现
+- 关于webpack开发环境起步的试验
 
 # redux_demo
 ## 功能说明
