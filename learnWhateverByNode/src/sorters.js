@@ -1,13 +1,15 @@
 function bubbleSort(arr) {
-  for (let i = arr.length; i >= 0 ; i--){
-    for (let j = i ; j < arr.length; j++){
+  // console.log(arr)
+  for (let i = arr.length - 1; i >= 0 ; i--){
+    for (let j = 0 ; j <= i; j++){
       if (arr[j] > arr[j+1]) {
-        // console.log(arr[j], arr[j+1])
+        // console.log(j)
         const temp = arr[j];
         arr[j] = arr[j+1];
         arr[j+1] = temp;
       }
     }
+    // console.log(arr)
   }
 }
 
@@ -77,20 +79,50 @@ function partition(arr, sIndex, eIndex, pivotIndex) {
   return storeIndex
 }
 
+function quickSort(arr, sIndex, eIndex){
+  // const pivot = arr[sIndex]; // 或随机数
+  if (eIndex > sIndex + 2) { // + n
+    // const initPivotIndex = sIndex + Math.floor(Math.random() * (eIndex - sIndex + 1));
+    // console.log(sIndex, eIndex, initPivotIndex)
+    const pivotIndex = partition(arr, sIndex, eIndex, sIndex);
+    quickSort(arr, sIndex, pivotIndex - 1, sIndex);
+    quickSort(arr, pivotIndex + 1, eIndex, sIndex);
+  } else { // 冒泡
+    for (let i = eIndex; i >= sIndex ; i--){
+      for (let j = sIndex ; j <= i; j++){
+        if (arr[j] > arr[j+1]) {
+          const temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
+        }
+      }
+    }
+  }
+}
 
-const size = 1000;
-const arr = [5, 6, 1, 2, 10, 3, 4, 8, 9, 7, 0];
-partition(arr, 0, 10, 0)
-console.log('\n ---final: ', JSON.stringify(arr))
-// const arr1 = [...new Array(2000)].map(_ => Math.floor(Math.random()*size));
-// const arr2 = [...new Array(2000)].map(_ => Math.floor(Math.random()*size));
+const size = 2000;
+// const arr = [5, 11, 2, 6, 10, 3, 4, 8, 9, 7, 0];
+// partition(arr, 0, 10, 0)
+// console.log('\n ---final: ', JSON.stringify(arr))
+// const arr1 = [3,2,5,1,2,9]
+const arr1 = [...new Array(size)].map(_ => Math.floor(Math.random()*size));
+const arr2 = [...new Array(size)].map(_ => Math.floor(Math.random()*size));
 
-// let start = new Date().getTime();
-// bubbleSort(arr1);
-// let end = new Date().getTime();
-// console.log('bubbleSort: ', end - start)
+let start = new Date().getTime();
+// console.log(JSON.stringify(arr1))
+quickSort(arr1, 0, arr1.length -1);
+console.log(JSON.stringify(arr1))
+let end = new Date().getTime();
+console.log('quickSort: ', end - start)
 
 // start = new Date().getTime();
 // mergeSort(arr2);
 // end = new Date().getTime();
 // console.log('mergeSort: ', end - start)
+
+start = new Date().getTime();
+arr2.sort((a,b) => a - b);
+end = new Date().getTime();
+console.log('vanila sort: ', end - start)
+
+// 测试排序是否成功 function sortTest
