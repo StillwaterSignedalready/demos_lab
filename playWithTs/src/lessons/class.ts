@@ -1,6 +1,6 @@
 class Animal {
-  private name; // 大概只能this.name这样访问
-  public constructor(name) {
+  private name: string; // 大概只能this.name这样访问
+  public constructor(name: string) {
       this.name = name;
   }
 }

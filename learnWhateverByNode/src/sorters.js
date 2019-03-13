@@ -59,11 +59,12 @@ function mergeSort(arr) { // arr: number[]
  */
 function partition(arr, sIndex, eIndex, pivotIndex) {
   const pivot = arr[pivotIndex];
-  // pivot 移动到末尾
+  // 第一步 pivot 移动到末尾
   arr[pivotIndex] = arr[eIndex];
   arr[eIndex] = pivot;
   let tmp = null;
-  let storeIndex = sIndex; // 动态，在左边的都是确认小于pivot的
+  // 第二步 分割pivot之外(左边)的区域
+  let storeIndex = sIndex; // 重点:动态，在它左边的都是已经确认小于pivot的,该项一直是尚不清楚比pivot大还是小的项，是一个分水岭
   for (let i = sIndex; i < eIndex; i++) {
     if (arr[i] < pivot) {
       // 交换 i 和 storeIndex
@@ -73,7 +74,8 @@ function partition(arr, sIndex, eIndex, pivotIndex) {
       storeIndex += 1; // 一旦交换马上右移,确保增量
     }
   }
-  // 此时 storeIndex大于pivot 交换 pivot所在index
+
+  // 第三步 此时 storeIndex大于pivot 交换 pivot所在index
   arr[eIndex] = arr[storeIndex];
   arr[storeIndex] = pivot;
   return storeIndex

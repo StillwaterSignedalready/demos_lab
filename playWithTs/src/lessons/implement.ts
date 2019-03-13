@@ -1,5 +1,5 @@
 interface Alarm {
-  alert();
+  alert() : string;
 }
 
 interface Light{
@@ -12,7 +12,7 @@ class Door{
 }
 
 class SecurityDoor extends Door implements Alarm{ // 继承类&继承接口
-  alert(){
+  alert() : void {
     console.log('alert');
   }
 }
