@@ -16,7 +16,7 @@ function ListNode(val) {
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1, l2) {
+var addTwoNumbersVer1 = function(l1, l2) {
   /** @type {1|0} */
   let carry = 0;
   const startNode = {};
@@ -44,7 +44,7 @@ var addTwoNumbers = function(l1, l2) {
     }
   }
   // one of List is end now, copy the rest List and plus last carry
-  if (currLeftNode || currRightNode) {
+  if (currLeftNode || currRightNode) { // 也可以归纳到上面的 while loop
     currNewNode.next = currLeftNode || currRightNode;
     currNewNode = currNewNode.next;
     while(carry && currNewNode) {
@@ -94,14 +94,44 @@ function lltoString(ll) {
   return '数字：' + str.reverse().join('')
 }
 
-// const a1 = [2,4,9];
-// const a2 = [5,6,4];
+/**
+ * @typedef {{val:number, next:ListNode}} ListNode
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbersVer2 = function (l1, l2) {
+  /** @type {1|0} */
+  const dummyHead = {};
+  let currNewNode = dummyHead;
+  let currLeftNode = l1;
+  let currRightNode = l2;
+  let carry = 0;
+  // 也可以把sum放这儿
+  while (currLeftNode || currRightNode) {
+    const x = currLeftNode ? currLeftNode.val : 0;
+    const y = currRightNode ? currRightNode.val : 0;
+    const sum = x + y + carry;
+    currNewNode.next = { val: sum % 10 };
+    currNewNode = currNewNode.next;
+    carry = Number(sum > 9);
+    if (currLeftNode) currLeftNode = currLeftNode.next;
+    if (currRightNode) currRightNode = currRightNode.next;
+  }
+  if (carry) {
+    currNewNode.next = { val: carry };
+  }
+  return dummyHead.next;
+}
+
+const a1 = [9,4,9];
+const a2 = [5,6,4];
 
 // const a1 = [1];
 // const a2 = [9,9];
 
-const a1 = [5];
-const a2 = [5];
+// const a1 = [5];
+// const a2 = [5];
 
 // const a1 = [9,8];
 // const a2 = [1];
@@ -110,5 +140,5 @@ const l1 = createLL(a1);
 const l2 = createLL(a2);
 console.log(lltoString(l1), lltoString(l2))
 
-const lr = addTwoNumbers(l1, l2);
+const lr = addTwoNumbersVer2(l1, l2);
 console.log(lltoString(lr))
