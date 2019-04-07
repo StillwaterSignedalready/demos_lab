@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="./three.js"></script>
+		<script>
+      // Our Javascript will go here.
+      /*
+      part 1
+      scene
+      camera
+      */
+      const {
+        Matrix3, Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh, Matrix4
+      } = THREE;
+
+      // var scene1 = new THREE.Scene();
+      var scene = new Scene();
+      /** (视角, 画面长宽比, ...[渲染范围(near, far)]) */
+      var camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+      var renderer = new WebGLRenderer();
+      // if pass third param false, resolution will be changed instead of size of window
+      renderer.setSize( window.innerWidth, window.innerHeight ); // try half
+      document.body.appendChild( renderer.domElement ); // it's a <canvas>
+      console.log(renderer.domElement)
+      /* part 2 draw cube */
+      var geometry = new BoxGeometry( 1, 1, 1 );
+      var material = new MeshBasicMaterial( { color: 0x00ff00 } );
+      var cube = new Mesh( geometry, material );
+      scene.add( cube );
+
+      camera.position.z = 5; // 将 camera 移出 cube
+
+      /* part 3 matrix */
+      var ma = new Matrix4();
+      ma.set(
+        1, 0.001, 0.001, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1,
+      );
+      
+      setInterval(() => {
+        cube.applyMatrix(ma) // !
+      }, 10);
+      cube.matrixAutoUpdate = false;
+
+      /* part 4 render per update */
+      function animate() {
+        // cube.rotation.x += 0.01;
+        // cube.rotation.y += 0.01;
+        // cube.matrx = ma;
+        // cube.updateMatrix();
+        ma.applyToBufferAttribute(camera.matrixWorld)
+        requestAnimationFrame( animate ); // 下一次屏幕刷新前调用
+        renderer.render( scene, camera );
+      }
+      animate();
+		</script>
+	</body>
+</html>
