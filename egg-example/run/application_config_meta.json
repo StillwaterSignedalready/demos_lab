@@ -1,0 +1,260 @@
+{
+  "keys": "/Users/fy/Documents/GitHub/demos_lab/egg-example/config/config.default.js",
+  "view": {
+    "defaultViewEngine": "/Users/fy/Documents/GitHub/demos_lab/egg-example/config/config.default.js",
+    "mapping": {
+      ".tpl": "/Users/fy/Documents/GitHub/demos_lab/egg-example/config/config.default.js"
+    },
+    "root": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-view/config/config.default.js",
+    "cache": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-view/config/config.local.js",
+    "defaultExtension": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-view/config/config.default.js"
+  },
+  "session": {
+    "maxAge": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-session/config/config.default.js",
+    "key": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-session/config/config.default.js",
+    "httpOnly": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-session/config/config.default.js",
+    "encrypt": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-session/config/config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+    "protocolWhiteList": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+    "defaultMiddleware": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+    "csrf": {
+      "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "useSession": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "ignoreJSON": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "cookieName": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "sessionName": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "headerName": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "bodyName": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "queryName": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "xframe": {
+      "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "hsts": {
+      "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.local.js",
+      "maxAge": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "includeSubdomains": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "dta": {
+      "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "noopen": {
+      "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "nosniff": {
+      "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "xssProtection": {
+      "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "csp": {
+      "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "policy": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js",
+      "checkAddress": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-security/config/config.default.js"
+  },
+  "jsonp": {
+    "limit": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-jsonp/config/config.default.js",
+    "callback": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-jsonp/config/config.default.js",
+    "csrf": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-jsonp/config/config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-onerror/config/config.default.js",
+    "appErrorFilter": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-onerror/config/config.default.js",
+    "templatePath": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-onerror/config/config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-i18n/config/config.default.js",
+    "dirs": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-i18n/config/config.default.js",
+    "queryField": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-i18n/config/config.default.js",
+    "cookieField": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-i18n/config/config.default.js",
+    "cookieMaxAge": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-i18n/config/config.default.js"
+  },
+  "watcher": {
+    "type": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-watcher/config/config.local.js",
+    "eventSources": {
+      "default": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-watcher/config/config.default.js",
+      "development": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-watcher/config/config.default.js"
+    }
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-schedule/config/config.default.js",
+      "file": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-schedule/config/config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-schedule/config/config.default.js"
+  },
+  "multipart": {
+    "mode": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "autoFields": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "defaultCharset": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "fieldNameSize": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "fieldSize": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "fields": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "fileSize": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "files": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "fileExtensions": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "whitelist": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "tmpdir": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js",
+    "cleanSchedule": {
+      "cron": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-multipart/config/config.default.js"
+    }
+  },
+  "development": {
+    "watchDirs": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-development/config/config.default.js",
+    "ignoreDirs": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-development/config/config.default.js",
+    "fastReady": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-development/config/config.default.js",
+    "reloadOnDebug": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-development/config/config.default.js",
+    "overrideDefault": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-development/config/config.default.js"
+  },
+  "logrotator": {
+    "filesRotateByHour": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "hourDelimiter": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "filesRotateBySize": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "maxFileSize": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "maxFiles": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "rotateDuration": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-logrotator/config/config.default.js",
+    "maxDays": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-logrotator/config/config.default.js"
+  },
+  "static": {
+    "prefix": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-static/config/config.default.js",
+    "dir": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-static/config/config.default.js",
+    "dynamic": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-static/config/config.default.js",
+    "preload": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-static/config/config.default.js",
+    "buffer": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-static/config/config.default.js",
+    "maxFiles": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg-static/config/config.default.js"
+  },
+  "env": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "name": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "proxy": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "maxProxyCount": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "protocolHeaders": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "ipHeaders": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "hostHeaders": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "pkg": {
+    "name": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "version": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "description": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "main": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "scripts": {
+      "test": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "dev": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "author": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "license": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "dependencies": {
+      "egg": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "egg-view-nunjucks": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "devDependencies": {
+      "egg-bin": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+    }
+  },
+  "baseDir": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "HOME": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "rundir": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "dump": {
+    "ignore": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "notFound": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "sitefile": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "middlewares": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "httpClient": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "bodyParser": {
+    "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "encoding": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "formLimit": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "jsonLimit": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "strict": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "queryString": {
+      "arrayLimit": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "depth": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "parameterLimit": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+    }
+  },
+  "logger": {
+    "dir": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "encoding": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "env": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "level": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "consoleLevel": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "disableConsoleAfterReady": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "outputJSON": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "buffer": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "appLogName": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "coreLogName": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "agentLogName": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "errorLogName": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "coreLogger": {
+      "consoleLevel": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.local.js"
+    },
+    "allowDebugAtProd": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "dnsCacheLookupInterval": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "dnsCacheMaxLength": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "request": {
+      "timeout": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "freeSocketTimeout": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "maxSockets": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "maxFreeSockets": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "freeSocketTimeout": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "maxSockets": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "maxFreeSockets": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "logging": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "coreMiddleware": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "workerStartTimeout": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "serverTimeout": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "port": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+      "hostname": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js",
+    "responseTimeout": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+  },
+  "onClientError": "/Users/fy/Documents/GitHub/demos_lab/egg-example/node_modules/egg/config/config.default.js"
+}
