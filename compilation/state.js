@@ -116,6 +116,12 @@ function Expression(source){
   return Expression(source);
 }
 
+// 括号的操作 比 A & M 高一级，比表达式优先处理
+/**
+ * if (遇到括号) then 将该括号替换为数组，并把括号到反括号之间的token全push到该数组，再对这个数组递归此操作
+ * 
+ */
+
 /**
  * shift(exp) shift(operator) 合成下一个次级节点(也是shift*2 + 1 的形式) 再把这三项合成当前节点
  * 这里不会出现连续两个 MultiplicativeExpression 节点 因为 MultiplicativeExpression函数有’贪婪‘属性
@@ -124,6 +130,14 @@ function Expression(source){
  * @param {{type:string}[]} source 
  */
 function AdditiveExpression(source){
+  if(Array.isArray(source[0])) { // 这时 source[1] 一定不是*/
+    // let node = {
+    //     type:"AdditiveExpression",
+    //     children:[source[0]]
+    // }
+    // source[0] = node;
+    // return AdditiveExpression(source);
+}
   if(source[0].type === "MultiplicativeExpression") { // 这时 source[1] 一定不是*/
       let node = {
           type:"AdditiveExpression",
@@ -158,6 +172,19 @@ function AdditiveExpression(source){
       source.unshift(node);
       return AdditiveExpression(source);
   }
+  if(source[0].type === "AdditiveExpression" && source[1] && source[1].type === "-") {
+      // let node = {
+      //     type:"AdditiveExpression",
+      //     operator:"-",
+      //     children:[]
+      // }
+      // node.children.push(source.shift());
+      // node.children.push(source.shift());
+      // MultiplicativeExpression(source);
+      // node.children.push(source.shift());
+      // source.unshift(node);
+      // return AdditiveExpression(source);
+  }
   if(source[0].type === "AdditiveExpression") // 完毕
       return source[0];
 
@@ -165,7 +192,12 @@ function AdditiveExpression(source){
   return AdditiveExpression(source);
 }
 function MultiplicativeExpression(source){
-  if(source[0].type === "Number") {
+  if (Array.isArray(source[0])) {
+    const node = Expression(source[0])
+    source[0] = node;
+    return MultiplicativeExpression(source);
+  }
+  if(source[0].type === "Number") { // 起点
       let node = {
           type:"MultiplicativeExpression",
           children:[source[0]]

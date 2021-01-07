@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <input type="text">
+  <button>计算</button>
+  <script>
+    const input = document.getElementsByTagName('input')[0]
+    const btn = document.getElementsByTagName('button')[0]
+    input.value = '(123 + 321) + (3209 - 455)'
+
+    let charListCache = [];
+    let tokenList = [];
+    btn.addEventListener('click', () => {
+      console.log(input.value)
+      charListCache = [];
+      tokenList = [];
+
+      const charList = input.value.trim().replace(/\s+/g, ' ').split('');
+      charList.push(null);
+      console.log('charList', charList)
+
+      let charHandler = startHandler;
+      for (const char of charList) {
+        charHandler = charHandler(char);
+      }
+      console.log('tokenList', tokenList)
+      function charListGoToken(type) {
+        if (charListCache.length) {
+          tokenList.push({ 
+            type,
+            content: charListCache.join('')
+          });
+          charListCache = [];
+        }
+      }
+      const syntaxTree = buildTree(tokenList, 0);
+      
+
+      // // 语法分析 语法树
+      function buildTree(tokenList, startIndex, endIndex) {
+        // function name(token) {
+          
+        // }
+        let currNode;
+        for (const token of tokenList) {
+          if (token.type === '(') {
+
+          } else if (token.type === ')') {
+
+          }
+        }
+
+
+      }
+
+      // 词法分析
+      // every charHandler should return another charHandler
+      // charHandler 可以表示当前缓存的 token 类型， 本质上是一种状态机
+      function startHandler(currChar) {
+        if (currChar === null) {
+          charListGoToken();
+          return startHandler;
+        }
+        if (['+', '-' , '*' , '/'].includes(currChar)) {
+          charListGoToken();
+          tokenList.push({ type: currChar, content:currChar });
+          return startHandler;
+        }
+        if (currChar === '(' || currChar === ')') {
+          charListGoToken();
+          tokenList.push({ type: currChar, content:currChar });
+          return startHandler;
+        }
+        if (/[0-9]|\./.test(currChar)) {
+          numberHandler(currChar);
+          return numberHandler;
+        }
+        if (/\s/.test(currChar)) {
+          charListGoToken();
+          return startHandler;
+        }
+        return startHandler;
+      }
+
+      function numberHandler(currChar) {
+        if (currChar === null) {
+          charListGoToken();
+          return startHandler;
+        }
+        if (currChar === '(' || currChar === ')') {
+          charListGoToken();
+          tokenList.push({ type: currChar, content:currChar });
+          return startHandler;
+        }
+        if (/[0-9]|\./.test(currChar)) {
+          charListCache.push(currChar);
+          return numberHandler;
+        }
+        if (['+', '-' , '*' , '/'].includes(currChar)) {
+          charListGoToken();
+          tokenList.push({ type: currChar, content:currChar });
+          return startHandler;
+        }
+        return startHandler;
+      }
+
+
+      function OperationHandler(currChar) {
+
+      }
+
+      function leftParanHandler(currChar) {
+
+      }
+
+      function rightParanHandler(currChar) {
+
+      }
+    })
+    
+  </script>
+</body>
+</html>

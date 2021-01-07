@@ -1,0 +1,42 @@
+<div class="badyContent">
+  <div style="width:450px;margin:10px auto">
+    <input v-model="inputVaule" placeholder="请输入内容" style="width: 200px;" ></input>
+    <button type="primary" @click="getInputValue" style="margin-left: 10px;">开始</button>
+  </div>
+  <script>
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 505;
+    canvas.height = 606;
+    document.body.appendChild(canvas)
+
+    // const imgData = canvas
+    function drawText(text) {
+      ctx.save()
+      ctx.font = "200px 微软雅黑 bold";
+      ctx.fillStyle = 'rgba(168,168,168,1)'
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'middle'
+      ctx.fillText(text, canvas.width / 2, canvas.height / 2)
+      ctx.restore()
+    }
+
+    function draw(params) {
+      // ctx.fillStyle = 'rgba(200,0,0)'
+      // ctx.fillRect(10, 10, 55, 50)
+
+      // ctx.fillStyle = 'rgba(0,0, 200, 0.5)'
+      // ctx.fillRect(30, 30, 55, 50)
+      for (var i=0;i<6;i++){
+        for (var j=0;j<6;j++){
+          ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' + 
+                          Math.floor(255-42.5*j) + ',0)';
+          console.log('rgb(' + Math.floor(255-42.5*i) + ',' + 
+                          Math.floor(255-42.5*j) + ',0)')
+          ctx.fillRect(j*25,i*25,25,25);
+        }
+      }
+    }
+    draw()
+  </script>
+</div>
