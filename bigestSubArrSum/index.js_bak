@@ -1,0 +1,77 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function(nums) {
+  const len = nums.length;
+  let start = 0;
+  let end = len - 1;
+  for (let i = 0; i < len; i++) {
+    if (nums[i] > 0) start = i; break;
+  }
+  for (let i = len - 1; i >= 0; i--) {
+    if (nums[i] > 0) end = i; break;
+  }
+
+  let leftIndex = 0;
+  // reduce 累加 正一段、负一段、正一段...
+  // 如果出现负数就把前面的都断绝，并把sum归零
+  let leftSum = 0;
+  let rightIndex = length - 1;
+  let rightSum = 0;
+
+  function getMaxSumArray() {
+    const list = nums.slice(leftIndex, rightIndex)
+    const length = list.length;
+    // leftSide
+    let partialSum = 0;
+    let meetNegative = false;
+    let meetPositiveAfterNegative = false;
+    for (let i = 0; i < list.length; i++) {
+      if (meetPositiveAfterNegative) break;
+      const num = list[i];
+      if (num < 0) meetNegative = true;
+      if (meetNegative && num > 0) {
+        meetPositiveAfterNegative = true;
+        leftIndex = i - 1;
+      }
+      partialSum += num;
+    }
+    partialSum = 0;
+    meetNegative = false;
+    meetPositiveAfterNegative = false;
+    for (let i = length - 1; i >= 0; i--) { // 特殊情况：直接到底
+      if (meetPositiveAfterNegative) break;
+      const num = list[i];
+      if (num < 0) meetNegative = true;
+      if (meetNegative && num > 0) {
+        meetPositiveAfterNegative = true;
+        rightIndex = i + 1;
+      }
+      partialSum += num;
+    }
+    list.slice(leftIndex, rightIndex + 1)
+
+    return getMaxSumArray()
+  }
+
+  const maxArray = getMaxSumArray(nums.slice(start, end + 1));
+  return maxArray.reduce((a, b) => a + b, 0);
+  /**
+   * function getMaxSumArray(start, end) {
+   *  let innerStart
+   *  let innerEnd
+   *  for (let i = start; i < end; i++) {
+   *    if (nums > 0) then innerStart = i; break;
+   *  }
+   *  for (let i = end; i < end; i--) {
+   *    if (nums > 0) then innerEnd = i; break;
+   *  }
+   *  
+   * }
+   */
+};
+
+const nums = [-2,1,-3,4,-1,2,1,-5,4]
+const result = maxSubArray(nums);
+console.log('result', result)

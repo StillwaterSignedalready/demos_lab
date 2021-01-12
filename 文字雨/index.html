@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #root {
+      width: 1000px;
+      height: 700px;
+    }
+  </style>
+</head>
+  <div id="root"></div>
+<body>
+  <script>
+    window.onload = function() {
+      const container = document.getElementById('root');
+      const { clientWidth: width, clientHeight: height } = container;
+      // const width = 500;
+      // const height = 500;
+      const {
+        chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]\\}{;\':",./<>?`~',
+        fontSize = 16,
+        fontColor = '#00cc33',
+        fillColor = 'rgba(0,0,0,0.05)',
+        heavyRain = 0.15, // 雨量大小 值越大 量越小
+        rainSpeed = 300, // 雨速 值越大 速度越慢
+      } = {};
+
+      const canvasEle = document.createElement("canvas");
+      canvasEle.width = width;
+      canvasEle.height = height;
+      container.appendChild(canvasEle);
+      //
+      const context = canvasEle.getContext("2d");
+      const columnsCount = Math.floor(width / fontSize);
+      const lastPositonsOfChar = new Array(columnsCount).fill(0); // 新文字初始y坐标
+      let lastRenderTime = new Date().getTime();
+      const drawInterval = 200 + (2000 / rainSpeed);
+
+      const charsCount = chars.length;
+
+      function draw() {
+        const currRenderTime = new Date().getTime();
+        if (currRenderTime - lastRenderTime >= drawInterval) {
+          lastRenderTime = currRenderTime;
+          // 层叠 mask
+          context.fillStyle = fillColor;
+          context.fillRect(0, 0, width, height);
+          // 字体样式
+          context.font = `700 ${fontSize}px 微软雅黑`;
+          context.fillStyle = fontColor;
+
+          for (let i = 0; i < columnsCount; i++) {
+            // const char = chars[Math.floor(Math.random() * charsCount)];
+            const char = String.fromCharCode(30 + Math.floor(Math.random() * 100));
+            const charXcor = i * fontSize;
+            const charYcor = lastPositonsOfChar[i];
+            context.fillText(char, charXcor, charYcor);
+            if (charYcor >= height && Math.random() > (1 - heavyRain)) {
+              lastPositonsOfChar[i] = 0;
+            }
+            lastPositonsOfChar[i] += fontSize;
+          }
+        }
+
+        animationFrameId = requestAnimationFrame(draw);
+      }
+      draw();
+    }
+  </script>
+</body>
+</html>
