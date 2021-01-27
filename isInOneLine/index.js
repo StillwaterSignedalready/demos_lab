@@ -15,7 +15,7 @@ var checkStraightLine = function(coordinates) {
     for (let i = 2; i < coordinates.length; i++) {
       const [xi, yi] = coordinates[i];
       const [xii, yii] = coordinates[i - 1];
-      const localDir = (yii - yi) / (xii - xi)
+      const localDir = (yii - yi) / (xii - xi) // 除法可以优化为乘法 就不会有 Infinity
       // console.log('localDir', localDir)
       // console.log('directive', directive)
       if (!((directive === localDir) || (directive === (1 / localDir)))) return false;

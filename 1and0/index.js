@@ -60,7 +60,6 @@ const n = 3;
 const res = findMaxForm(strs, m, n)
 console.log('res', res)
 
-
 /**
  * 状态转移1
  * getBigestArr(strs, m, n) = getBiggerArr( // 一个采用当前 item, 一个不采用

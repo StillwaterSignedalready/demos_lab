@@ -17,7 +17,6 @@ var majorityElement = function(nums) { // 摩尔投票算法
   }
 
   if (stackCount >= 0) {
-    const length = nums.length;
     let majorCount = 0;
     for (const num of nums) {
       if (num === major) majorCount++;

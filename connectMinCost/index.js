@@ -16,8 +16,6 @@ var minCostConnectPoints = function (points) {
   for (let i = 0; i < pointsSize; i++) {
     for (let j = 0; j < pointsSize; j++) {
       if (i !== j) {
-        const [x1, y1] = points[i];
-        const [x2, y2] = points[j];
         edges.push([
           calcDist(points[i], points[j]),
           i,
@@ -47,6 +45,7 @@ class UnionDisJointSet {
   }
 
   merge(index1, index2) { // 如果 merged 返回false
+    console.log('index1', index1)
     // 路径压缩
     this.parent[this.findSet(index1)] = this.findSet(index2);
   }
