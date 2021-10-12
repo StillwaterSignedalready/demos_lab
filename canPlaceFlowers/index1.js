@@ -12,15 +12,15 @@ var canPlaceFlowers = function(flowerbed, n) {
   let count = 0;
   for (let i = 0; i < flowerbed.length; i++) {
     if (i === 0 && !flowerbed[i] && !flowerbed[i + 1]) {
-      console.log('1111')
+      // console.log('1111')
       flowerbed[i] = 1;
       count += 1;
     } else if (i === flowerbed.length - 1 && !flowerbed[i - 1] && !flowerbed[i]) {
-      console.log('2222')
+      // console.log('2222')
       flowerbed[i] = 1;
       count += 1;
     } else if (!flowerbed[i - 1] && !flowerbed[i + 1] && !flowerbed[i]) {
-      console.log('3333')
+      // console.log('3333')
       flowerbed[i] = 1;
       count += 1;
     }

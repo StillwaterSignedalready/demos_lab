@@ -254,12 +254,12 @@ rwx * 3 -表示否,  是否可读,是否可写,是否可执行 * 3 owner,group,o
 - if [ -f someName ] 中的 [ -f someName ] 实际上等价于 `test -f someName`
 - > 标准输出  ll >, 例如 `ll / > ~/rootfile`, > 覆盖 >> 累加
 - pipe 一个进程的输出可以作为另一个进程的输入 例如: 当 ll 的内容太多 一屏幕的长度都远远不够时 可以 `ll | less` 将 ll 输出的内容 作为 less 的 参数; 管线后的 指令 必须能够接受标准输入
-- cut 就是 split 例如 `echo ${PATH} | cut -d ':' -f 5` 将`PATH`变量中以`:`分隔, 截取第五个
+- `cut` 就是 split 例如 `echo ${PATH} | cut -d ':' -f 5` 将`PATH`变量中以`:`分隔, 截取第五个
 - last 显示最近登录讯息
 - grep 如果该行是我想要的 则输出那行 支持正则表达式; -v 没有指定的字符(反向); -n 高亮匹配的字符 -c 匹配个数 -A 匹配之后的几行 -B 匹配之前的几行
 - netstat; show network status
-- sort 排序
-- uniq 去重
+- sort 排序(默认按每行首字母)
+- uniq 去重(默认只去重连续的行，可以 `sort xx.txt | uniq`)
 - tee <file> 读取文件并`标准输出`之 `tee file | grep sometext`
 - $# ：代表後接的參數『個數』
 "$@" ：代表『 "$1" "$2" "$3" "$4" 』之意，每個變數是獨立的(用雙引號括起來)；
@@ -315,7 +315,7 @@ rwx * 3 -表示否,  是否可读,是否可写,是否可执行 * 3 owner,group,o
 - trap arg signals 收到信号则执行命令
 - `grep b < a.txt` 输入重定向, 重定向文件要写在命令的最后
 - nl 将输入字符每行前面加上数字标号
-- `sed "s/text/TEXT/g" filePath` 将文本中的 text 替换为 TEXT, sed -> stream edit, `s/`代表 substitute 替换 还可以 `d/` 删除 两个/直接支持正则表达式匹配 `sed "/text/ d" filePath` 删除有 text 的那行, p 表示 print, q 表示 quit, 引号中可放置多个表达式(用分号分隔)
+- `sed "s/text/TEXT/g" filePath` 将文本中的 `text` 替换为 `TEXT`, sed -> stream edit, `s/`代表 substitute 替换 还可以 `d/` 删除 两个/直接支持正则表达式匹配 `sed "/text/ d" filePath` 删除有 text 的那行, p 表示 print, q 表示 quit, 引号中可放置多个表达式(用分号分隔)
 - `cat b.txt | awk '{FS=","} /pattern/ {print $2}'` 将文件内容中匹配 pattern 的行打印， 每行内容再以 "," 分隔， 打印每行第二项
 - `df -h` 显示磁盘占用情况 -h 是为了加上单位
 - `free -g` 内存使用情况 可 -g -m 表示 gb mb 单位
@@ -497,7 +497,7 @@ process.on('uncaughtException', function (err) {
 - 在量词`* {3}`后面加上`?` 非贪婪模式
 
 # 其他(加密,es,数学)
-- 辗转相除法用来求最大公约数 如果最后要对乘积取余，那么在事先对乘数取余不会对结果造成影响
+- 辗转相除法用来求最大公约数(除数和被除数都由公约数组成，因此余数也是由公约数组成，每轮取余，余数一轮比一轮小，最终止于最大公约数) 如果最后要对乘积取余，那么在事先对乘数取余不会对结果造成影响
 - 一个磁盘上的数据在另一个磁盘上存在一个完全相同的副本即为镜像 格式有 ISO、BIN、IMG、TAO、DAO、CIF、FCD
 - 172.16.0.0/12 这是 ip 网段的掩码表示法，12是掩码中1的个数，也就是12个1，之后都是0
 - 非对称加密: 公钥用来加密 私钥用来解密， ssl 属于非对称加密, 服务端找 CA 申请证书(由服务端网址生成，方便客户端校验), 然后与客户端的交互不再返回公钥而是返回证书, 客户端浏览器用内置的 CA 验证证书

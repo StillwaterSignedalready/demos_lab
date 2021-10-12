@@ -18,7 +18,7 @@ var makeConnected = function(n, connections) {
     udjs.merge(index1, index2);
   }
   // * 需要计算的量： 1. setCount 连通分量的数量 2. redundantEdgeCount 多余边的总数
-  console.log('udjs.setCount', udjs.setCount)
+  // console.log('udjs.setCount', udjs.setCount)
   /**
    * connections.length - 累加每个连通分量(连通分量的边总数 - (连通分量的节点数 - 1))
    * const redundantEdgeCount = connections.length - Array.from(setIndexList).reduce((sum, setIndex) => {
@@ -31,26 +31,26 @@ var makeConnected = function(n, connections) {
   for (let i = 0; i < n; i ++) {
     setIndexList.add(udjs.findSet(i))
   }
-  console.log('setIndexList', setIndexList)
+  // console.log('setIndexList', setIndexList)
   const setIndex2edgeCount = {};
   for (const [index1, index2] of connections) {
      const setIndex = udjs.findSet(index1)
      setIndex2edgeCount[setIndex] = (setIndex2edgeCount[setIndex] || 0) + 1;
   }
-  console.log('setIndex2edgeCount', setIndex2edgeCount)
-  console.log('connections.length', connections.length)
+  // console.log('setIndex2edgeCount', setIndex2edgeCount)
+  // console.log('connections.length', connections.length)
   // 多余边的总数 = 总边数 - 所有连通分量的必要边数之和
   const redundantEdgeCount = connections.length - Array.from(setIndexList).reduce((sum, setIndex) => {
     // 连通分量的必要边数
      const localNescesaryEdgeCount = setIndex2edgeCount[setIndex] ? udjs.rank[setIndex] - 1 : 0;
-     console.log('-----------------------------')
-     console.log('-- setIndex', setIndex)
-     console.log('udjs.rank', udjs.rank)
-     console.log('-- localNescesaryEdgeCount', localNescesaryEdgeCount)
+    //  console.log('-----------------------------')
+    //  console.log('-- setIndex', setIndex)
+    //  console.log('udjs.rank', udjs.rank)
+    //  console.log('-- localNescesaryEdgeCount', localNescesaryEdgeCount)
      return sum + localNescesaryEdgeCount;
   }, 0)
-  console.log('redundantEdgeCount', redundantEdgeCount) // wrong?
-  console.log('setIndexList.size', setIndexList.size)
+  // console.log('redundantEdgeCount', redundantEdgeCount) // wrong?
+  // console.log('setIndexList.size', setIndexList.size)
   if (redundantEdgeCount >= setIndexList.size - 1) {
     return setIndexList.size - 1;
   } else {
@@ -108,5 +108,5 @@ class UnionDisJointSet {
 const n = 4 ;
 const connections = [[0,1],[0,2],[1,2]];
 const result = makeConnected(n, connections);
-console.log('result', result)
+// console.log('result', result)
 
