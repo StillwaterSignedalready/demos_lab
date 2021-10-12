@@ -14,7 +14,7 @@ var numEquivDominoPairs = function(dominoes) {
       content2count[`${head}-${foot}`] = 1;
     }
   }
-  console.log('content2count', content2count)
+  // console.log('content2count', content2count)
   return Object.keys(content2count).reduce((sum, key) => {
     const count = content2count[key];
     for (let i = 1; i < count; i++) {

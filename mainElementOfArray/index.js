@@ -3,6 +3,7 @@
  * @return {number}
  */
 var majorityElement = function(nums) { // 摩尔投票算法
+  // 只要相异则互相消耗 剩下的那个很可能是答案 或者说答案一定会剩下来
   let major = null;
   let stackCount = 0;
   for (const num of nums) {

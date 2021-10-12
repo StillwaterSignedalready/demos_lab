@@ -6,12 +6,10 @@ var prefixesDivBy5 = function(A) {
   const result = [];
   let curr = 0;
   for (let i = 0; i < A.length; i++) {
-    if (A[i] === 0 && curr !== 0) {
-      result.push(false);  
-    } else {
+
       curr = ((curr << 1) + A[i]) % 5;
       result.push(curr === 0);
-    }
+
   }
   return result;
 };

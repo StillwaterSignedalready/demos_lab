@@ -8,9 +8,6 @@ const FACTOR = 255;
  * @return {string}
  */
 var encode = function (longUrl) {
-  // console.log(longUrl.split(''))
-  // console.log(longUrl.split('').map(char => char.charCodeAt(0)))
-  console.log(longUrl.split('').map(char => String.fromCharCode(char.charCodeAt(0) + 1)))
   return longUrl.split('').map(char => String.fromCharCode(char.charCodeAt(0) + 1)).join('');
 };
 

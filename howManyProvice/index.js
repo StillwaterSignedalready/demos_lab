@@ -18,7 +18,7 @@ var findCircleNum = function(isConnected) {
     const nerborIsConnected = isConnected[cityIndex];
     for (let neiborIndex = 0; neiborIndex < nerborIsConnected.length; neiborIndex++) { // i
       if (nerborIsConnected[neiborIndex] && !touchedCity[neiborIndex]) {
-        console.log(cityIndex, '   ', neiborIndex)
+        // console.log(cityIndex, '   ', neiborIndex)
         walkProvinceFromCity(neiborIndex)
       }
     }

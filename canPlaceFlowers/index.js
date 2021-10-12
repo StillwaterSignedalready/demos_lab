@@ -15,7 +15,7 @@ var canPlaceFlowers = function(flowerbed, n) {
         // console.log('i', i)
         flowerbed[i] = 1;
       } else {
-        i++;
+        i++; // ! 骚操作
       }
       flowerbed[i] = 1;
     }
