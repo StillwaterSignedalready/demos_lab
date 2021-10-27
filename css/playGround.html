@@ -5,32 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-  <style>
-    .fff {
-      margin-top: 30px;
-      width: 400px;
-      height: 400px;
-      background-color: aqua;
-      /* float: left; */
-      /* shape-outside: circle(); */
+<style>
+    .container {
+      height: 600px;
+      background-color: green;
+      position: relative;
     }
-    .out {
-      /* overflow: hidden; */
-      /* background-color: aqua; */
+    
+    .main {
+      /* margin: auto; */
+      height: 200px;
+      background-color: blue;
+      width: 200px;
+
+      transform: translate(-100px, -100px);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      right: 0;
     }
-  </style>
+</style>
 <body>
-  <!-- <div>
-    aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa 
-    aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa
-    aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa 
-  </div> -->
-  <div class="out">
-    <div class="fff">
-      aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa 
-      aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa
-      aaaasdfasdfdfaaaaaaa aaaasdfasdfdfaaaaaaa 
-    </div>
+  <div class="container">
+    <div class="main"></div>
   </div>
 </body>
 </html>
